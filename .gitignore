@@ -1,0 +1,88 @@
+# ============================================================
+# Terraform
+# ============================================================
+
+# Terraform local state files
+*.tfstate
+*.tfstate.*
+
+# Terraform lock file (can be committed optionally, ignoring for learning)
+.terraform.lock.hcl
+
+# Terraform working directory
+.terraform/
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Sensitive variable files (if created later)
+*.tfvars.backup
+
+# ============================================================
+# Ansible
+# ============================================================
+
+# Ansible retry files
+*.retry
+
+# Ansible temporary files
+*.log
+
+# Ansible vault password files (NEVER commit)
+.vault_pass
+vault_pass.txt
+
+# ============================================================
+# SSH / Keys / Secrets
+# ============================================================
+
+# SSH private keys (never commit)
+id_rsa
+id_rsa_azure
+id_ed25519
+
+# SSH public keys (optional, safe but ignoring to be cautious)
+*.pub
+
+# Known hosts file (local machine specific)
+known_hosts
+
+# ============================================================
+# OS / Editor / Tooling
+# ============================================================
+
+# VS Code
+.vscode/
+
+# IntelliJ / JetBrains
+.idea/
+
+# Vim swap files
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Linux temp files
+*~
+
+# ============================================================
+# Misc
+# ============================================================
+
+# Environment files
+.env
+.env.*
+
+# Python cache (future use with Ansible modules/scripts)
+__pycache__/
+*.pyc
+
