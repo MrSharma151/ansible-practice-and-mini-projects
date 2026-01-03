@@ -1,88 +1,63 @@
 # ============================================================
-# Terraform
+# Terraform (inside terraform-ansible-azure-vm)
 # ============================================================
 
-# Terraform local state files
-*.tfstate
-*.tfstate.*
+terraform-ansible-azure-vm/.terraform/
+terraform-ansible-azure-vm/*.tfstate
+terraform-ansible-azure-vm/*.tfstate.*
+terraform-ansible-azure-vm/crash.log
+terraform-ansible-azure-vm/crash.*.log
 
-# Terraform lock file (can be committed optionally, ignoring for learning)
-.terraform.lock.hcl
-
-# Terraform working directory
-.terraform/
-
-# Terraform crash logs
-crash.log
-crash.*.log
+# IMPORTANT: tfvars must never be committed
+terraform-ansible-azure-vm/*.tfvars
 
 # Terraform override files
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-
-# Sensitive variable files (if created later)
-*.tfvars.backup
+terraform-ansible-azure-vm/override.tf
+terraform-ansible-azure-vm/override.tf.json
+terraform-ansible-azure-vm/*_override.tf
+terraform-ansible-azure-vm/*_override.tf.json
 
 # ============================================================
 # Ansible
 # ============================================================
 
-# Ansible retry files
+# Retry files
 *.retry
 
-# Ansible temporary files
+# Logs
 *.log
 
-# Ansible vault password files (NEVER commit)
+# Vault password files (never commit)
 .vault_pass
 vault_pass.txt
 
 # ============================================================
-# SSH / Keys / Secrets
+# SSH / Secrets
 # ============================================================
 
-# SSH private keys (never commit)
+# SSH private keys
 id_rsa
-id_rsa_azure
 id_ed25519
+id_rsa_azure
 
-# SSH public keys (optional, safe but ignoring to be cautious)
-*.pub
-
-# Known hosts file (local machine specific)
+# Known hosts (machine specific)
 known_hosts
 
 # ============================================================
-# OS / Editor / Tooling
+# Editors / OS
 # ============================================================
 
-# VS Code
 .vscode/
-
-# IntelliJ / JetBrains
 .idea/
-
-# Vim swap files
 *.swp
 *.swo
-
-# macOS
+*~
 .DS_Store
 
-# Linux temp files
-*~
-
 # ============================================================
-# Misc
+# Python cache (future use)
 # ============================================================
 
-# Environment files
-.env
-.env.*
-
-# Python cache (future use with Ansible modules/scripts)
 __pycache__/
 *.pyc
 
