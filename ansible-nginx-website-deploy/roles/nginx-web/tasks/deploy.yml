@@ -1,0 +1,35 @@
+# Deploy website code from a public GitHub repository
+
+- name: Ensure web root directory exists
+  file:
+    path: "{{ web_root }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Install Git (required to clone repository)
+  apt:
+    name: git
+    state: present
+
+- name: Remove existing website content (clean deployment)
+  file:
+    path: "{{ web_root }}"
+    state: absent
+
+- name: Recreate web root directory
+  file:
+    path: "{{ web_root }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Clone website code from GitHub
+  git:
+    repo: "{{ github_repo_url }}"
+    dest: "{{ web_root }}"
+    version: "{{ github_repo_branch }}"
+    force: yes
+  notify: Reload NGINX

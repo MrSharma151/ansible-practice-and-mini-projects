@@ -1,0 +1,10 @@
+# Inventory file for Azure virtual machines
+# This file defines the target hosts on which Ansible will run tasks
+
+[azure_vm]
+# Replace the IP with your actual Azure VM public IP
+# ansible_user should be the SSH user for the VM
+# ansible_ssh_private_key_file points to your SSH private key
+
+172.191.105.21 ansible_user=azureuser ansible_ssh_private_key_file=~/.ssh/id_rsa
+

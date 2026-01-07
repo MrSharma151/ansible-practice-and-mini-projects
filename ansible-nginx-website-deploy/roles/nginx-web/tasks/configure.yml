@@ -1,0 +1,7 @@
+# Ensure NGINX service is running and enabled on boot
+
+- name: Start and enable NGINX service
+  service:
+    name: "{{ nginx_service }}"
+    state: started
+    enabled: yes

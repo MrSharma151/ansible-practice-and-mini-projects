@@ -1,0 +1,7 @@
+# Handlers for nginx-web role
+# Handlers run only when notified by tasks
+
+- name: Reload NGINX
+  service:
+    name: "{{ nginx_service }}"
+    state: reloaded

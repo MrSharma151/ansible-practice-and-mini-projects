@@ -1,0 +1,17 @@
+# Playbook to deploy a static website on an NGINX web server
+# The website code is fetched from a public GitHub repository
+# This playbook uses the nginx-web role
+
+- name: Deploy website using NGINX
+  # Target hosts defined in inventory
+  hosts: azure_vm
+
+  # Enable privilege escalation for package installation and service management
+  become: true
+
+  # Gather system facts (useful for debugging and future extensions)
+  gather_facts: true
+
+  # Apply nginx-web role
+  roles:
+    - nginx-web

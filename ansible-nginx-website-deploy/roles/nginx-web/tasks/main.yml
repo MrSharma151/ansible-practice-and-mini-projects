@@ -1,0 +1,11 @@
+# Main task file for nginx-web role
+# Tasks are executed in the order they are imported
+
+- name: Install NGINX
+  import_tasks: install.yml
+
+- name: Configure NGINX service
+  import_tasks: configure.yml
+
+- name: Deploy website from GitHub
+  import_tasks: deploy.yml

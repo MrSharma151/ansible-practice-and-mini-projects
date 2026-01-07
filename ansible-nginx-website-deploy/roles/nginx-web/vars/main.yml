@@ -1,0 +1,18 @@
+# Variables for nginx-web role
+# Keeping variables here makes the role reusable and clean
+
+# NGINX package name (Ubuntu/Debian)
+nginx_package: nginx
+
+# NGINX service name
+nginx_service: nginx
+
+# Root directory where website files will be deployed
+web_root: /var/www/html
+
+# Public GitHub repository containing website code
+# This must be a PUBLIC repository
+github_repo_url: "https://github.com/MrSharma151/my-devops-portfolio.git"
+
+# Branch to deploy
+github_repo_branch: main
