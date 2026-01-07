@@ -1,0 +1,7 @@
+---
+# Configure nginx website
+
+- name: Deploy index.html
+  template:
+    src: index.html
+    dest: /var/www/html/index.html

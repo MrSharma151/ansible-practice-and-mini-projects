@@ -1,0 +1,47 @@
+---
+# ============================================================
+# NOTE (IMPORTANT):
+# ------------------------------------------------------------
+# Environment variables in Ansible:
+# - Are passed to the remote shell environment
+# - Do NOT behave like normal Ansible variables
+# - Are NOT visible in playbook output by default
+#
+# In this role, we are using `debug` with
+# `lookup('env', 'VAR_NAME')` ONLY for DEMONSTRATION
+# and learning purposes.
+#
+# In real projects, environment variables are usually
+# consumed by applications, scripts, or services,
+# not printed in playbook output.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Playbook-level environment variable
+# ------------------------------------------------------------
+- name: Environment variable at playbook level (demo)
+  debug:
+    msg: "EXAMPLE variable value is: {{ lookup('env', 'EXAMPLE') }}"
+
+
+# ------------------------------------------------------------
+# Task-level environment variable
+# ------------------------------------------------------------
+- name: Environment variable at task level (demo)
+  environment:
+    MY_TASK_LEVEL_VARIABLE: "Hello World!"
+  debug:
+    msg: "MY_TASK_LEVEL_VARIABLE value is: {{ lookup('env', 'MY_TASK_LEVEL_VARIABLE') }}"
+
+
+# ------------------------------------------------------------
+# Testing playbook and task-level environment variables together
+# ------------------------------------------------------------
+- name: Combined environment variables (demo)
+  environment:
+    MY_TASK_LEVEL_VARIABLE: "Hello World!"
+  debug:
+    msg: >
+      EXAMPLE={{ lookup('env', 'EXAMPLE') }},
+      MY_TASK_LEVEL_VARIABLE={{ lookup('env', 'MY_TASK_LEVEL_VARIABLE') }}

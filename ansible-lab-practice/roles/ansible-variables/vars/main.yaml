@@ -1,0 +1,6 @@
+---
+# ------------------------------------------------------------
+# Variables from vars file
+# ------------------------------------------------------------
+
+vars_from_vars_file: "This variable is coming from vars/main.yaml"

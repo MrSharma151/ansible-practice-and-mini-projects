@@ -1,0 +1,77 @@
+---
+# ------------------------------------------------------------
+# Ansible Variables - Tasks
+# ------------------------------------------------------------
+
+- name: String variable from playbook
+  debug:
+    var: main_playbook_variable
+
+- name: Boolean variable (conditional execution)
+  debug:
+    msg: "Boolean variable is enabled"
+  when: is_enabled
+
+- name: List variable - print all fruits
+  debug:
+    var: fruits
+
+- name: List variable - first fruit
+  debug:
+    var: fruits[0]
+
+- name: Dictionary variable - all prices
+  debug:
+    var: fruit_prices
+
+- name: Dictionary variable - apple price
+  debug:
+    var: fruit_prices.apple
+
+# ------------------------------------------------------------
+# Register variable example
+# ------------------------------------------------------------
+
+- name: Register apple price using command
+  command: echo "{{ fruit_prices['apple'] }}"
+  register: apple_price_as_registered_var
+
+- name: Print registered variable
+  debug:
+    var: apple_price_as_registered_var.stdout
+
+# ------------------------------------------------------------
+# Nested variable example
+# ------------------------------------------------------------
+
+- name: Access nested variable value
+  debug:
+    var: fruit_prices[fruit_basket[0].fruits[0]]
+
+# ------------------------------------------------------------
+# Jinja2 filter usage
+# ------------------------------------------------------------
+
+- name: Jinja2 filter on dictionary keys
+  debug:
+    var: fruit_prices.keys() | list | map('upper') | list
+
+# ------------------------------------------------------------
+# Variables from vars file
+# ------------------------------------------------------------
+
+- name: Variable from vars file
+  debug:
+    var: vars_from_vars_file
+
+# ------------------------------------------------------------
+# Runtime variables (-e)
+# ------------------------------------------------------------
+
+- name: Runtime variable - version
+  debug:
+    var: version
+
+- name: Runtime variable from external var file
+  debug:
+    var: other_variable

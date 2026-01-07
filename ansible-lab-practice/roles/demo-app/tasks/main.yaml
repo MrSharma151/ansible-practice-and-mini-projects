@@ -1,0 +1,21 @@
+# This task prints the database username fetched from Ansible Vault
+# The variable `db_username` is expected to be defined in:
+# group_vars/all/vault.yml (encrypted using ansible-vault)
+
+- name: Show database username
+  debug:
+    msg: "DB User is {{ db_username }}"
+
+# This task creates an application configuration file on the target host
+# It uses a Jinja2 template which references Vault variables:
+# - db_username
+# - db_password
+# - api_token
+#
+# If Vault variables are not loaded (wrong inventory or missing vault password),
+# this task WILL FAIL.
+
+- name: Create application config file
+  template:
+    src: config.j2
+    dest: /tmp/app-config.conf

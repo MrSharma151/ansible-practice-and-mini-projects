@@ -1,0 +1,17 @@
+---
+# ------------------------------------------------------------
+# Ansible Conditionals Demo Playbook
+# ------------------------------------------------------------
+# Demonstrates different types of `when` conditionals
+# ------------------------------------------------------------
+
+- name: Ansible Conditionals Demonstration
+  hosts: azure_vm
+  become: true
+
+  vars:
+    # Boolean flag for apache installation
+    install_apache_flag: false
+
+  roles:
+    - ansible-conditionals

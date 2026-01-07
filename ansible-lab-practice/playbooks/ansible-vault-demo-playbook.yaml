@@ -1,0 +1,18 @@
+# This playbook demonstrates the usage of Ansible Vault
+# Vault variables are stored in group_vars/all/vault.yml (encrypted)
+
+- name: Ansible Vault Demo
+  # This MUST match the inventory group name
+  # Verified via `ansible-inventory --list`
+  hosts: azure_vm
+
+  # Enable privilege escalation if required
+  # (safe even if not strictly needed for debug tasks)
+  become: true
+
+  # Roles automatically load:
+  # - tasks/main.yml
+  # - templates
+  # - vars (if any)
+  roles:
+    - demo-app

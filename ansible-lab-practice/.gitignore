@@ -1,0 +1,84 @@
+# ================================
+# Ansible Vault & Secrets
+# ================================
+
+# Vault password files (NEVER commit)
+vault-password.txt
+*.vault_pass
+*.vault-password
+
+# Encrypted secrets (optional safety)
+# Uncomment if you ever store extra secret files
+# **/secrets.yml
+# **/vault.yml
+
+# ================================
+# SSH & Credentials
+# ================================
+
+# SSH private keys
+*.pem
+*.ppk
+id_rsa
+id_rsa.pub
+.ssh/
+
+# ================================
+# Ansible Runtime Artifacts
+# ================================
+
+# Retry files (older Ansible versions)
+*.retry
+
+# Cached facts
+.fact_cache/
+facts/
+.cache/
+
+# ================================
+# OS / Editor Files
+# ================================
+
+# Linux
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# ================================
+# IDE / Editor
+# ================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ================================
+# Logs & Temporary Files
+# ================================
+
+*.log
+tmp/
+temp/
+
+# ================================
+# Python / Virtualenv (if used later)
+# ================================
+
+__pycache__/
+*.pyc
+venv/
+.env
+
+# ================================
+# Terraform (future safety)
+# ================================
+
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+.crash.log

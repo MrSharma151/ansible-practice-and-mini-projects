@@ -1,0 +1,72 @@
+---
+# ============================================================
+# NOTE:
+# All tasks in this role are for DEMONSTRATION purposes only
+# to understand how Ansible conditionals (`when`) work.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Boolean conditional
+# ------------------------------------------------------------
+- name: Install Apache web server (Boolean condition)
+  apt:
+    name: apache2
+    state: absent
+  when: install_apache_flag
+
+
+# ------------------------------------------------------------
+# Multiple conditions using ansible_facts (list format)
+# ------------------------------------------------------------
+- name: Combine conditions using ansible facts
+  debug:
+    var: ansible_facts['kernel_version']
+  when:
+    - ansible_facts['os_family'] == "Debian"
+    - ansible_facts['distribution_major_version'] | int >= 20
+
+
+# ------------------------------------------------------------
+# Complex conditional (single line)
+# ------------------------------------------------------------
+- name: Setting complex condition
+  debug:
+    var: ansible_facts['kernel_version']
+  when: ansible_facts['os_family'] == "Debian" and ansible_facts['distribution_major_version'] | int >= 20
+
+
+# ------------------------------------------------------------
+# Register variable and evaluate using when
+# ------------------------------------------------------------
+- name: Create a test file for register demo
+  copy:
+    dest: /home/azureuser/test-file.txt
+    content: "hi this is ansible conditionals demo"
+
+- name: Register file content
+  command: cat /home/azureuser/test-file.txt
+  register: test_file_content
+
+- name: Use registered variable in conditional
+  debug:
+    var: test_file_content.stdout
+  when: test_file_content.stdout.find('hi') != -1
+
+
+# ------------------------------------------------------------
+# When with loop
+# ------------------------------------------------------------
+- name: Run task only for items greater than 5
+  command: echo {{ item }}
+  loop: [0, 2, 4, 6, 8, 10]
+  when: item > 5
+
+
+# ------------------------------------------------------------
+# Conditional based on ansible_facts
+# ------------------------------------------------------------
+- name: Using ansible_facts in conditional
+  debug:
+    var: ansible_facts['distribution']
+  when: ansible_facts['os_family'] == "Debian"

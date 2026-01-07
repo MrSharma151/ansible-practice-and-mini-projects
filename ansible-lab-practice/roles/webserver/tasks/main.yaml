@@ -1,0 +1,10 @@
+---
+# ------------------------------------------------------------
+# Webserver Role - Main Tasks File
+# ------------------------------------------------------------
+# This file controls the order of tasks
+# inside the webserver role.
+# ------------------------------------------------------------
+
+- import_tasks: install.yaml
+- import_tasks: config.yaml

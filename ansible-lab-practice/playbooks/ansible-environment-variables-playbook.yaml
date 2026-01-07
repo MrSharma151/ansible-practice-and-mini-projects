@@ -1,0 +1,22 @@
+---
+# ------------------------------------------------------------
+# Ansible Environment Variables Demo Playbook
+# ------------------------------------------------------------
+# Demonstrates:
+# 1. Environment variables at playbook level
+# 2. Environment variables at task level
+# ------------------------------------------------------------
+
+- name: Ansible Environment Variables Demonstration
+  hosts: azure_vm
+  become: true
+
+  # ------------------------------------
+  # Environment variables at PLAY level
+  # ------------------------------------
+  environment:
+    EXAMPLE: "Foo bar"
+    MY_VAR1: "variable value1"
+
+  roles:
+    - ansible-environment-variables

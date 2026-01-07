@@ -1,0 +1,11 @@
+---
+# ------------------------------------------------------------
+# Ansible Error Handling Demonstration Playbook
+# ------------------------------------------------------------
+
+- name: Ansible Error Handling Demo
+  hosts: azure_vm
+  become: true
+
+  roles:
+    - ansible-error-handling

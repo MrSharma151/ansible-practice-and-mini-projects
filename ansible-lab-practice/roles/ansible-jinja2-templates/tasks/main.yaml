@@ -1,0 +1,15 @@
+---
+# ------------------------------------------------------------
+# Jinja2 Templates - Tasks
+# ------------------------------------------------------------
+
+- name: Ensure nginx is installed
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Deploy Jinja2 rendered HTML page
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html

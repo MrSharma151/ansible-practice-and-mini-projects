@@ -1,0 +1,15 @@
+---
+# ------------------------------------------------------------
+# Common Role - Tasks
+# ------------------------------------------------------------
+
+- name: Update apt cache
+  apt:
+    update_cache: true
+
+- name: Install basic packages
+  apt:
+    name:
+      - curl
+      - vim
+    state: present

@@ -1,0 +1,16 @@
+---
+# ------------------------------------------------------------
+# Roles and Tasks Demonstration Playbook
+# ------------------------------------------------------------
+# Order matters:
+# 1. common role runs first
+# 2. webserver role runs after
+# ------------------------------------------------------------
+
+- name: Ansible Roles and Tasks Demo
+  hosts: azure_vm
+  become: true
+
+  roles:
+    - common
+    - webserver

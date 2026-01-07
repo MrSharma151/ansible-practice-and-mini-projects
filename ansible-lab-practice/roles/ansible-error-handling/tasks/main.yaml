@@ -1,0 +1,54 @@
+---
+# ============================================================
+# NOTE:
+# All tasks in this role are INTENTIONALLY designed
+# to demonstrate Ansible error-handling mechanisms.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 1. ignore_errors
+# ------------------------------------------------------------
+- name: Command that fails but play continues
+  command: /bin/false
+  ignore_errors: true
+
+
+# ------------------------------------------------------------
+# 2. failed_when (custom failure condition)
+# ------------------------------------------------------------
+- name: Run command and control failure manually
+  command: echo "status=OK"
+  register: command_output
+
+- name: Mark task as failed using failed_when
+  debug:
+    msg: "Manually failing this task"
+  failed_when: "'ERROR' in command_output.stdout"
+
+
+# ------------------------------------------------------------
+# 3. changed_when (control changed status)
+# ------------------------------------------------------------
+- name: Command that runs but should not mark changed
+  command: echo "No actual change"
+  changed_when: false
+
+
+# ------------------------------------------------------------
+# 4. block / rescue / always
+# ------------------------------------------------------------
+- name: Error handling using block, rescue, always
+  block:
+    - name: Task that fails inside block
+      command: cat /tmp/non-existent-file
+
+  rescue:
+    - name: Recover from failure
+      debug:
+        msg: "File not found, handled gracefully"
+
+  always:
+    - name: Always run cleanup step
+      debug:
+        msg: "This task always runs"

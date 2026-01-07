@@ -1,0 +1,23 @@
+---
+# ------------------------------------------------------------
+# Ansible Jinja2 Templates Demo Playbook
+# ------------------------------------------------------------
+
+- name: Ansible Jinja2 Templates Demonstration
+  hosts: azure_vm
+  become: true
+
+  vars:
+    app_name: "Ansible Jinja2 Demo"
+    enable_message: true
+
+    users:
+      - name: Rohit
+        role: DevOps Engineer
+      - name: John
+        role: Cloud Engineer
+      - name: Jane
+        role: Platform Engineer
+
+  roles:
+    - ansible-jinja2-templates
