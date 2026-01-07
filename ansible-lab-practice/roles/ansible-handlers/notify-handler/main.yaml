@@ -1,0 +1,12 @@
+---
+# ------------------------------------------------------------
+# Notify Handler - Restart Nginx
+# ------------------------------------------------------------
+# This handler is triggered using `notify`
+# and runs ONLY when a task reports a change.
+# ------------------------------------------------------------
+
+- name: restart nginx service
+  service:
+    name: nginx
+    state: restarted

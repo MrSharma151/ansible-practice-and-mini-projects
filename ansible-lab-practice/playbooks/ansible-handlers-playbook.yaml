@@ -1,0 +1,19 @@
+---
+# ------------------------------------------------------------
+# Handlers Role Tasks Playbook
+# ------------------------------------------------------------
+# Purpose:
+# - Run tasks that notify handlers
+# - Load handler definitions from a custom location
+# ------------------------------------------------------------
+
+- name: Practice Ansible Handlers
+  hosts: azure_vm
+  become: true
+
+  roles:
+    - ansible-handlers
+    
+  handlers:
+    - import_tasks: ../roles/ansible-handlers/notify-handler/main.yaml
+      name: notify-handler

@@ -1,0 +1,15 @@
+---
+# ------------------------------------------------------------
+# Common Role - Tasks
+# ------------------------------------------------------------
+# This role contains basic tasks that should run
+# on every server.
+#
+# First task:
+# - Ensure the system package index is updated
+# ------------------------------------------------------------
+
+- name: Update apt package index
+  apt:
+    update_cache: true
+

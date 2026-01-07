@@ -1,0 +1,23 @@
+---
+# ------------------------------------------------------------
+# Handlers Practice - Tasks
+# ------------------------------------------------------------
+# Purpose:
+# - Install Nginx
+# - Deploy website content
+# - Notify handler when content changes
+# ------------------------------------------------------------
+
+- name: Update apt cache and install nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+
+- name: Deploy nginx index page
+  template:
+    src: index.html    # change index.html to updated-index.html to update the content
+    dest: /var/www/html/index.html
+  notify:
+    - restart nginx service
+

@@ -1,0 +1,18 @@
+---
+# ------------------------------------------------------------
+# Site Playbook
+# ------------------------------------------------------------
+# This is the main entry point playbook.
+# It applies the "common" role on Azure VMs.
+#
+# Purpose:
+# - Run basic system-level tasks
+# - Prepare servers for further configuration
+# ------------------------------------------------------------
+
+- name: Apply common configuration on Azure VM
+  hosts: azure_vm
+  become: true
+
+  roles:
+    - first-demo-role
